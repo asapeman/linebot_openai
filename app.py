@@ -55,14 +55,18 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    try:
-        GPT_answer = GPT_response(msg)
-        print(GPT_answer)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
-    except:
-        print(traceback.format_exc())
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
-        
+    if '@蘇小鳳' in msg:
+        try:
+            GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
+            print(GPT_answer)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+        except:
+            print(traceback.format_exc())
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
+    elif msg == '謝':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
+    elif '國基' in msg or '國機' in msg:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

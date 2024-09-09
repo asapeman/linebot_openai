@@ -67,6 +67,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
     elif '國基' in msg or '國機' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機'))
+    elif '陷阱' in msg:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('最好是陷阱有那麼多'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

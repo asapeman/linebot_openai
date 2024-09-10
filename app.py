@@ -31,7 +31,7 @@ def job1():
     line_bot_api.reply_message(event.reply_token, TextSendMessage('呷崩'))
 
 scheduler = BlockingScheduler(timezone="Asia/Taipei")
-scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=0)
+scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=10)
 
 def GPT_response(text):
     # 接收回應

@@ -8,6 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from apscheduler.schedulers.blocking import BlockingScheduler
+
 #======python的函數庫==========
 import tempfile, os
 import datetime
@@ -25,6 +27,11 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
+def job1():
+    line_bot_api.reply_message(event.reply_token, TextSendMessage('呷崩'))
+
+scheduler = BlockingScheduler(timezone="Asia/Taipei")
+scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=0)
 
 def GPT_response(text):
     # 接收回應

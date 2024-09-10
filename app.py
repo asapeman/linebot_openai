@@ -9,7 +9,7 @@ from linebot.exceptions import (
 from linebot.models import *
 
 import time
-import schedule
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 #======python的函數庫==========
 import tempfile, os

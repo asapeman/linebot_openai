@@ -8,6 +8,9 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+import time
+import schedule
+
 #======python的函數庫==========
 import tempfile, os
 import datetime
@@ -33,6 +36,13 @@ def GPT_response(text):
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
+
+
+def job1():
+    line_bot_api.reply_message(event.reply_token, TextSendMessage('呷崩'))
+
+scheduler = BlockingScheduler(timezone="Asia/Taipei")
+scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=00)
 
 
 # 監聽所有來自 /callback 的 Post Request

@@ -34,13 +34,9 @@ def GPT_response(text):
     answer = response['choices'][0]['text'].replace('。','')
     return answer
 
-def job1():
+f = time.strftime("%H:%M:%S", time.localtime())
+if f=='12:00:00':
     line_bot_api.push_message(to, TextSendMessage(text='呷崩'))
-
-scheduler = BlockingScheduler(timezone="Asia/Taipei")
-scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=0)
-scheduler.start()
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])

@@ -57,7 +57,8 @@ def handle_message(event):
     if '@蘇小鳳' in msg:
         # try:
         if '生日' in msg:
-            birthday = '康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
+            
         #     GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
         #     print(GPT_answer)
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))

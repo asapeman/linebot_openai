@@ -55,13 +55,15 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     if '@蘇小鳳' in msg:
-        try:
-            GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
-            print(GPT_answer)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
-        except:
-            print(traceback.format_exc())
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
+        # try:
+        if '生日' in msg:
+            birthday = '康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18"
+        #     GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
+        #     print(GPT_answer)
+        #     line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+        # except:
+        #     print(traceback.format_exc())
+        #     line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
     elif '國基' in msg or '國機' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機'))
     elif '陷阱' in msg:

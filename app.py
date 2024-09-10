@@ -73,6 +73,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage('最好是陷阱有那麼多'))
     elif '老實' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
+    elif '愛情' in msg:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好\n但愛情公寓千萬別碰~'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

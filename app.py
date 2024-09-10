@@ -34,8 +34,8 @@ def GPT_response(text):
     answer = response['choices'][0]['text'].replace('。','')
     return answer
 
-f = time.strftime("%H:%M:%S", time.localtime())
-if f=='12:00:00':
+time1 = time.strftime("%H:%M:%S", time.localtime())
+if time1=='12:00:00':
     line_bot_api.push_message(to, TextSendMessage(text='呷崩'))
 
 # 監聽所有來自 /callback 的 Post Request

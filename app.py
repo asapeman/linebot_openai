@@ -63,8 +63,6 @@ def handle_message(event):
         except:
             print(traceback.format_exc())
             line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
-    elif msg == '謝':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
     elif '國基' in msg or '國機' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機'))
     elif '陷阱' in msg:

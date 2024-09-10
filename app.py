@@ -14,6 +14,7 @@ import datetime
 import openai
 import time
 import traceback
+from apscheduler.schedulers.blocking import BlockingScheduler
 #======python的函數庫==========
 
 app = Flask(__name__)
@@ -32,6 +33,13 @@ def GPT_response(text):
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
+
+def job1():
+    line_bot_api.push_message(to, TextSendMessage(text='呷崩'))
+
+scheduler = BlockingScheduler(timezone="Asia/Taipei")
+scheduler.add_job(job1, 'cron', day_of_week='0-6', hour=12, minute=0)
+scheduler.start()
 
 
 # 監聽所有來自 /callback 的 Post Request

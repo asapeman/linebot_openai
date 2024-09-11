@@ -62,7 +62,7 @@ def handle_message(event):
         elif '郭所長' in msg and '照片' in msg:
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
             line_bot_api.reply_message(event.reply_token, picmsg)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('帥'))
+            line_bot_api.reply_message(TextSendMessage('帥'))
         #     GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
         #     print(GPT_answer)
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))

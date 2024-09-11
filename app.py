@@ -72,13 +72,13 @@ def handle_message(event):
         #     print(traceback.format_exc())
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
     elif '國基' in msg or '國機' in msg:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
     elif '陷阱' in msg:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('最好是陷阱有那麼多'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
     elif '老實' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
     elif '愛情' in msg:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好\n但愛情公寓千萬別碰~'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

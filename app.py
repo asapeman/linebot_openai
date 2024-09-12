@@ -75,6 +75,10 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
         elif '結婚' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
+        elif '挖' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
+    elif msg == '挖':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

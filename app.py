@@ -79,7 +79,7 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, picmsg)
     except:
         print('無法取得')
-        elif '國基' in msg or '國機' in msg:
+        if '國基' in msg or '國機' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
         elif '陷阱' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))

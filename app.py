@@ -55,44 +55,32 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     if '@蘇小鳳' in msg:
-            # try:
-            if '生日' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
-            elif '郭' in msg and '照片' in msg:
-                picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-                line_bot_api.reply_message(event.reply_token, picmsg)
-            #     GPT_answer = GPT_response(msg.split('@蘇小鳳')[0])
-            #     print(GPT_answer)
-            #     line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
-            # except:
-            #     print(traceback.format_exc())
-            #     line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
-    try:
-        UserId = event.source.user_id
-        profile = line_bot_api.get_profile(UserId)
-        print(profile)
-        if '@蘇小鳳' in msg:
-            if '生日' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
-            elif '郭' in msg and '照片' in msg:
-                picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-                line_bot_api.reply_message(event.reply_token, picmsg)
-    except:
-        print('無法取得')
-        if '國基' in msg or '國機' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
-        elif '陷阱' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
-        elif '老實' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
-        elif '愛情' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
-        elif '計畫' in msg or '計劃' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
-        elif '貧乳' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
-        elif '結婚' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
+        if '生日' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
+        elif '郭' in msg and '照片' in msg:
+            picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
+            line_bot_api.reply_message(event.reply_token, picmsg)
+    else:
+        try:
+            UserId = event.source.user_id
+            profile = line_bot_api.get_profile(UserId)
+            print(profile)
+        except:
+            print('無法取得')
+            if '國基' in msg or '國機' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
+            elif '陷阱' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
+            elif '老實' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
+            elif '愛情' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
+            elif '計畫' in msg or '計劃' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
+            elif '貧乳' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
+            elif '結婚' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

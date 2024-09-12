@@ -84,6 +84,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
+    elif event.message.type=='image':
+        line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
             
 
 @handler.add(PostbackEvent)

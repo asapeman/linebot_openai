@@ -60,27 +60,21 @@ def handle_message(event):
         elif '郭' in msg and '照片' in msg:
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
             line_bot_api.reply_message(event.reply_token, picmsg)
-    else:
-        try:
-            UserId = event.source.user_id
-            profile = line_bot_api.get_profile(UserId)
-            print(profile)
-        except:
-            print('無法取得')
-            if '國基' in msg or '國機' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
-            elif '陷阱' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
-            elif '老實' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
-            elif '愛情' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
-            elif '計畫' in msg or '計劃' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
-            elif '貧乳' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
-            elif '結婚' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
+    elif event.source.user_id != 'U6abe720c74a3720fc837cbb1e22ca5c1':
+        if '國基' in msg or '國機' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
+        elif '陷阱' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
+        elif '老實' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
+        elif '愛情' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
+        elif '計畫' in msg or '計劃' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
+        elif '貧乳' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
+        elif '結婚' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

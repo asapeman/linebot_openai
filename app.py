@@ -83,6 +83,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('XD'))
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
+    elif event.source.user_id == 'U6abe720c74a3720fc837cbb1e22ca5c1':
+        if msg == '驚嚇':
+            line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
 
 @handler.add(PostbackEvent)
 def handle_message(event):

@@ -59,7 +59,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
         elif '郭' in msg and '照片' in msg:
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-            line_bot_api.reply_message(event.reply_token, picmsg)
+            txtmsg = TextSendMessage('帥')
+            line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
     elif event.source.user_id != 'U6abe720c74a3720fc837cbb1e22ca5c1':
         if '國基' in msg or '國機' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))

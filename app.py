@@ -53,20 +53,8 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    try:
-        UserId = event.source.user_id
-        profile = line_bot_api.get_profile(UserId)
-        print(profile)
-        if '@蘇小鳳' in msg:
-            if '生日' in msg:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
-            elif '郭' in msg and '照片' in msg:
-                picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-                line_bot_api.reply_message(event.reply_token, picmsg)
-    except:
-        print('無法取得')
-        msg = event.message.text
-        if '@蘇小鳳' in msg:
+    msg = event.message.text
+    if '@蘇小鳳' in msg:
             # try:
             if '生日' in msg:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
@@ -79,6 +67,18 @@ def handle_message(event):
             # except:
             #     print(traceback.format_exc())
             #     line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
+    try:
+        UserId = event.source.user_id
+        profile = line_bot_api.get_profile(UserId)
+        print(profile)
+        if '@蘇小鳳' in msg:
+            if '生日' in msg:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
+            elif '郭' in msg and '照片' in msg:
+                picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
+                line_bot_api.reply_message(event.reply_token, picmsg)
+    except:
+        print('無法取得')
         elif '國基' in msg or '國機' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
         elif '陷阱' in msg:

@@ -53,6 +53,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    print(event.message.type)
     msg = event.message.text
     if '@蘇小鳳' in msg:
         if '生日' in msg:
@@ -84,8 +85,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
-    elif event.type!='message':
-        line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
             
 
 @handler.add(PostbackEvent)

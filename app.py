@@ -79,6 +79,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
         elif '免費' in msg or '不用錢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('免費的最貴~~~'))
+        elif 'XD' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('XD'))
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, TextSendMessage('大林廷❤️鳳'))
 

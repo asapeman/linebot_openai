@@ -53,6 +53,9 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    UserId = event.source.user_id
+    profile = line_bot_api.get_profile(UserId)
+    print(profile)
     msg = event.message.text
     if '@蘇小鳳' in msg:
         # try:

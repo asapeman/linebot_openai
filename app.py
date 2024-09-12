@@ -75,7 +75,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
     elif '愛情' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('愛情很美好，但愛情公寓千萬別碰~'))
-    elif '計畫' or '計劃' in msg:
+    elif '計畫' in msg or '計劃' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
     elif '貧乳' in msg:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))

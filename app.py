@@ -83,7 +83,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('免費的最貴~~~'))
         elif 'http' in msg.lower():
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
-        elif '甲崩' in msg or '呷崩' in msg or '甲奔' in msg:
+        elif '甲崩' in msg or '呷崩' in msg or '甲奔' in msg or '謝'== msg:
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=6362, sticker_id=11087922))
         elif '感冒' in msg or '生病' in msg:
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1070, sticker_id=17876))

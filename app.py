@@ -63,7 +63,7 @@ def handle_message(event):
             txtmsg = TextSendMessage('帥')
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
     elif event.source.user_id != 'U6abe720c74a3720fc837cbb1e22ca5c1':
-        if '國基' in msg or '國機' in msg:
+        if '國' in msg and '機' in msg and '基' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
         elif '陷阱' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))

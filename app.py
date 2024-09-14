@@ -90,7 +90,7 @@ def handle_message(event):
         elif '忘' in msg:
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=11538, sticker_id=51626515))
         elif '離婚' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('揮別錯的糞便製造機，才能和對的相逢喔~~~'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('揮別錯的糞便製造機，才能和對的重逢喔~~~'))
 
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))

@@ -78,7 +78,7 @@ def handle_message(event):
         elif '計畫' in msg or '計劃' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國中時老實人和我說好的鳳凰入厝計畫呢?'))
         elif '貧乳' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的,說最愛貧乳實際上最愛巨乳!    '))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人很悶騷的，說最愛貧乳實際上最愛巨乳!'))
         elif '結婚' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('原本以為會跟老實人結婚的呢~~誰知道...唉~'))
         elif '挖' in msg:
@@ -95,6 +95,11 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=11538, sticker_id=51626515))
         elif '離婚' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('揮別錯的糞便製造機，才能和對的重逢喔~~~'))
+        elif '學長' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('學長有順便提醒\n別忘了鳳凰入厝的計劃嗎?'))
+        elif '學姊' in msg or '學姐' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('學姊有順便提醒\n別忘了鳳凰入厝的計劃嗎?'))
+    
 
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))

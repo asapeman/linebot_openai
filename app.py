@@ -115,6 +115,11 @@ def handle_message(event):
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
             txtmsg = TextSendMessage('帥')
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
+        else:
+            Gemini_answer = linebot(msg)
+            print(Gemini_answer)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(Gemini_answer))
+    
     elif event.source.user_id != 'U6abe720c74a3720fc837cbb1e22ca5c1':
         if '國' in msg and '機' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))

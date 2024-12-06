@@ -7,6 +7,10 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
+import json
+import os
+from firebase import firebase
+import google.generativeai as genai
 
 #======python的函數庫==========
 import tempfile, os
@@ -25,13 +29,58 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-def GPT_response(text):
-    # 接收回應
-    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
-    print(response)
-    # 重組回應
-    answer = response['choices'][0]['text'].replace('。','')
-    return answer
+firebase_url = os.getenv('FIREBASE_URL')
+gemini_key = os.getenv('GEMINI_API_KEY')
+
+
+def linebot(request):
+    body = request.get_data(as_text=True)
+    json_data = json.loads(body)
+    try:
+        line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
+        handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
+        signature = request.headers['X-Line-Signature']
+        handler.handle(body, signature)
+        event = json_data['events'][0]
+        tk = event['replyToken']
+        user_id = event['source']['userId']
+        msg_type = event['message']['type']
+
+        fdb = firebase.FirebaseApplication(firebase_url, None)
+        user_chat_path = f'chat/{user_id}'
+        chat_state_path = f'state/{user_id}'
+        chatgpt = fdb.get(user_chat_path, None)
+
+        if msg_type == 'text':
+            msg = event['message']['text']
+
+            if chatgpt is None:
+                messages = []
+            else:
+                messages = chatgpt
+
+            if msg == '!清空':
+                reply_msg = TextSendMessage(text='對話歷史紀錄已經清空！')
+                fdb.delete(user_chat_path, None)
+            else:
+                model = genai.GenerativeModel('gemini-pro')
+                messages.append({'role':'user','parts': [msg]})                
+                response = model.generate_content(messages)
+                messages.append({'role':'model','parts': [response.text]})                
+                reply_msg = TextSendMessage(text=response.text)
+                # 更新firebase中的對話紀錄
+                fdb.put_async(user_chat_path, None , messages)
+                
+            line_bot_api.reply_message(tk, reply_msg)
+
+        else:
+            reply_msg = TextSendMessage(text='你傳的不是文字訊息呦')
+            line_bot_api.reply_message(tk, reply_msg)
+
+    except Exception as e:
+        detail = e.args[0]
+        print(detail)
+    return 'OK'
 
 
 # 監聽所有來自 /callback 的 Post Request

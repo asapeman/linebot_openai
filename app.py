@@ -111,14 +111,21 @@ def handle_message(event):
         elif '重逢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('朋友還是老的好，情人還是舊的好'))
 
-        elif '郭' in msg and '照' in msg and '心動' in msg:
+        elif '郭' in msg and '照' in msg and '帥' in msg:
             picmsg = ImageSendMessage(original_content_url='https://i.imgur.com/YeWYeph.jpeg',preview_image_url='https://i.imgur.com/YeWYeph.jpeg')
             txtmsg = TextSendMessage('帥')
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
 
-        elif '郭' in msg and '照' in msg and '帥' in msg:
+        elif '郭' in msg and '照' in msg and '心動' in msg:
+            emoji = [
+                {
+                    "index": 0,
+                    "productId": "670e0cce840a8236ddd4ee4c",
+                    "emojiId": "165"
+                }
+            ]
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-            txtmsg = TextSendMessage('帥')
+            txtmsg = TextSendMessage(emojis=emoji)
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
         else:
             Gemini_answer = linebot(msg)

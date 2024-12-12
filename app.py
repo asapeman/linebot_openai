@@ -117,15 +117,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
 
         elif '郭' in msg and '照' in msg and '心動' in msg:
-            emoji = [
-                {
-                    "index": 0,
-                    "productId": "670e0cce840a8236ddd4ee4c",
-                    "emojiId": "165"
-                }
-            ]
             picmsg = ImageSendMessage(original_content_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg',preview_image_url='https://mx.nthu.edu.tw/~chwu/pictures/eight-god.jpg')
-            txtmsg = TextSendMessage(emojis=emoji)
+            txtmsg = TextSendMessage("\U0001F493")
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
         else:
             Gemini_answer = linebot(msg)

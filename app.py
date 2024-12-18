@@ -160,7 +160,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('學長有順便提醒\n別忘了鳳凰入厝的計劃嗎?'))
         elif '學姊' in msg or '學姐' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('學姊有順便提醒\n別忘了鳳凰入厝的計劃嗎?'))
-        elif '屬什麼' in msg:
+        elif '屬' in msg and '什麼' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('我屬於老實人\U0001F495'))
+        elif '屬' in msg and 於' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('我屬於老實人\U0001F495'))
     
 

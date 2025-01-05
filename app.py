@@ -120,7 +120,7 @@ def handle_message(event):
             }
             
             def find_closest_birthday(birthdays):
-                today = datetime.now()
+                today = datetime.today()
                 current_year = today.year
             
                 closest_person = None
@@ -143,7 +143,7 @@ def handle_message(event):
                         closest_person = person
                 return closest_person, min_days_diff
             closest_person, days_left = find_closest_birthday(birthdays)
-            print(f"最近的生日是 {closest_person}，距離今天還有 {days_left} 天！")
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(f"最近的生日是 {closest_person}，距離今天還有 {days_left} 天！"))
 
         elif '重逢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('朋友還是老的好，情人還是舊的好'))

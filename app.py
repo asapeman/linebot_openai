@@ -15,9 +15,7 @@ from datetime import datetime, timedelta
 
 #======python的函數庫==========
 import tempfile, os
-import datetime
 import openai
-import time
 import traceback
 #======python的函數庫==========
 

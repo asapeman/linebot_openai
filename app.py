@@ -99,38 +99,7 @@ def callback():
         abort(400)
     return 'OK'
 
-birthdays = {
-    "康爺": "11-02",
-    "錢崴": "04-08",
-    "阿信": "06-20",
-    "郭所長": "08-03",
-    "小八":"08-18"
-}
 
-def find_closest_birthday(birthdays):
-    today = datetime.today()
-    current_year = today.year
-
-    closest_person = None
-    min_days_diff = float('inf')
-
-    for person, birth_date in birthdays.items():
-        # 將生日結合今年，轉換為 datetime
-        birthday_this_year = datetime.strptime(f"{current_year}-{birth_date}", "%Y-%m-%d")
-
-        # 如果生日已過，今年的生日就要考慮下一年
-        if birthday_this_year < today:
-            birthday_this_year = datetime.strptime(f"{current_year + 1}-{birth_date}", "%Y-%m-%d")
-
-        # 計算距離今天的天數
-        days_diff = (birthday_this_year - today).days
-
-        # 更新最近的生日
-        if days_diff < min_days_diff:
-            min_days_diff = days_diff
-            closest_person = person
-
-    return closest_person, min_days_diff
 
 
 # 處理訊息
@@ -143,6 +112,38 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/7\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
             
         elif '最近' in msg:
+            birthdays = {
+                "康爺": "11-02",
+                "阿果": "01/07"
+                "錢崴": "04-08",
+                "阿信": "06-20",
+                "郭所長": "08-03",
+                "小八":"08-18"
+            }
+            
+            def find_closest_birthday(birthdays):
+                today = datetime.today()
+                current_year = today.year
+            
+                closest_person = None
+                min_days_diff = float('inf')
+            
+                for person, birth_date in birthdays.items():
+                    # 將生日結合今年，轉換為 datetime
+                    birthday_this_year = datetime.strptime(f"{current_year}-{birth_date}", "%Y-%m-%d")
+            
+                    # 如果生日已過，今年的生日就要考慮下一年
+                    if birthday_this_year < today:
+                        birthday_this_year = datetime.strptime(f"{current_year + 1}-{birth_date}", "%Y-%m-%d")
+            
+                    # 計算距離今天的天數
+                    days_diff = (birthday_this_year - today).days
+            
+                    # 更新最近的生日
+                    if days_diff < min_days_diff:
+                        min_days_diff = days_diff
+                        closest_person = person
+                return closest_person, min_days_diff
             closest_person, days_left = find_closest_birthday(birthdays)
             print(f"最近的生日是 {closest_person}，距離今天還有 {days_left} 天！")
 

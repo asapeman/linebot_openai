@@ -139,9 +139,9 @@ def handle_message(event):
         if '生日' in msg:
             closest_person, days_left = find_closest_birthday(birthdays)
             if days_left != 0:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n最近的生日是 {closest_person}，距離今天還有 {days_left} 天！'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n'+f'最近的生日是 {closest_person}，距離今天還有 {days_left} 天！'))
             elif days_left == 0:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n最近的生日是 {closest_person}，就在今天！'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n'+f'最近的生日是 {closest_person}，就在今天！'))
 
         elif '重逢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('朋友還是老的好，情人還是舊的好'))

@@ -122,7 +122,7 @@ def handle_message(event):
             }
             
             def find_closest_birthday(birthdays):
-                today = datetime.today()
+                today = datetime.now()
                 current_year = today.year
             
                 closest_person = None

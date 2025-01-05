@@ -141,9 +141,10 @@ def handle_message(event):
     if '@蘇小鳳' in msg:
         if '生日' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
-            if '最近' in msg:
-                closest_person, days_left = find_closest_birthday(birthdays)
-                print(f"最近的生日是 {closest_person}，距離今天還有 {days_left} 天！")
+            
+        elif '最近' in msg:
+            closest_person, days_left = find_closest_birthday(birthdays)
+            print(f"最近的生日是 {closest_person}，距離今天還有 {days_left} 天！")
 
         elif '重逢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('朋友還是老的好，情人還是舊的好'))

@@ -109,12 +109,12 @@ def handle_message(event):
     msg = event.message.text
     if '@蘇小鳳' in msg:
         if '生日' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/7\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18'))
             
         elif '最近' in msg:
             birthdays = {
                 "康爺": "11-02",
-                "阿果": "01-07",
+                "阿果": "01-06",
                 "錢崴": "04-08",
                 "阿信": "06-20",
                 "郭所長": "08-03",

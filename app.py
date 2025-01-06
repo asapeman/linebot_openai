@@ -131,7 +131,7 @@ def find_closest_birthday(birthdays):
 
     # 特殊處理：如果距離為 0 天，表示今天就是生日
     if min_days_diff == 0:
-        return closest_person, "生日就是今天！"
+        return closest_person, "生日就是今天！\U0001F389"
     else:
         return closest_person, f"距離今天還有 {min_days_diff} 天"
 

@@ -107,7 +107,7 @@ birthdays = {
 }
 
 def find_closest_birthday(birthdays):
-    today = datetime.now()
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # 清除時間部分
     current_year = today.year
 
     closest_person = None
@@ -131,9 +131,9 @@ def find_closest_birthday(birthdays):
 
     # 特殊處理：如果距離為 0 天，表示今天就是生日
     if min_days_diff == 0:
-        return closest_person, "生日就是今天！\U0001F389"
+        return closest_person, "生日就是今天！"
     else:
-        return closest_person, f"距離今天還有 {min_days_diff + 1} 天"
+        return closest_person, f"距離今天還有 {min_days_diff} 天"
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)

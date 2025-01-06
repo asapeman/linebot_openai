@@ -107,7 +107,7 @@ birthdays = {
 }
 
 def find_closest_birthday(birthdays):
-    today = datetime.today()
+    today = datetime.now()
     current_year = today.year
 
     closest_person = None
@@ -118,17 +118,22 @@ def find_closest_birthday(birthdays):
         birthday_this_year = datetime.strptime(f"{current_year}-{birth_date}", "%Y-%m-%d")
 
         # 如果生日已過，今年的生日就要考慮下一年
-        if birthday_this_year <= today:
+        if birthday_this_year < today:
             birthday_this_year = datetime.strptime(f"{current_year + 1}-{birth_date}", "%Y-%m-%d")
 
         # 計算距離今天的天數
-        days_diff = (birthday_this_year - today).days+1
+        days_diff = (birthday_this_year - today).days
 
         # 更新最近的生日
         if days_diff < min_days_diff:
             min_days_diff = days_diff
             closest_person = person
-    return closest_person, min_days_diff
+
+    # 特殊處理：如果距離為 0 天，表示今天就是生日
+    if min_days_diff == 0:
+        return closest_person, "生日就是今天！"
+    else:
+        return closest_person, f"距離今天還有 {min_days_diff + 1} 天"
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -137,11 +142,8 @@ def handle_message(event):
     msg = event.message.text
     if '@蘇小鳳' in msg:
         if '生日' in msg:
-            closest_person, days_left = find_closest_birthday(birthdays)
-            if days_left != 0:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n'+f'最近的生日是 {closest_person}，距離今天還有 {days_left} 天！'))
-            elif days_left == 0:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n'+f'最近的生日是 {closest_person}，就在今天！'))
+            closest_person, message = find_closest_birthday(birthdays)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('康爺：11/2\n阿果：1/6\n錢崴：4/8\n阿信：6/20\n郭所長：8/3\n小八：8/18\n'+f'最近的生日是 {closest_person}，{message}'))
 
         elif '重逢' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('朋友還是老的好，情人還是舊的好'))

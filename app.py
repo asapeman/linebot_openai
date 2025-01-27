@@ -164,7 +164,7 @@ def handle_message(event):
             }
             data = {
                 "model": "deepseek-chat",
-                "messages": [{"role": "user", "content": user_message}]
+                "messages": [{"role": "user", "content": msg}]
             }
             response = requests.post(API_URL, json=data, headers=headers)
             if response.status_code == 200:

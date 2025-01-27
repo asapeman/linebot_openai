@@ -158,10 +158,10 @@ def handle_message(event):
             txtmsg = TextSendMessage("\U0001F493")
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
         else:
-           headers = {
+            headers = {
                 "Authorization": f"Bearer {API_KEY}",
                 "Content-Type": "application/json"
-           }
+            }
             data = {
                 "model": "deepseek-chat",
                 "messages": [{"role": "user", "content": user_message}]

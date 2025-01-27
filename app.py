@@ -28,8 +28,8 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-firebase_url = os.getenv('FIREBASE_URL')
-gemini_key = os.getenv('GEMINI_API_KEY')
+API_URL = "https://api.deepseek.com/v1/chat/completions"
+API_KEY = os.getenv('DEEPSEEK_API_KEY')
 
 
 def linebot(request):
@@ -158,9 +158,26 @@ def handle_message(event):
             txtmsg = TextSendMessage("\U0001F493")
             line_bot_api.reply_message(event.reply_token, [picmsg,txtmsg])
         else:
-            Gemini_answer = linebot(msg)
-            print(Gemini_answer)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(Gemini_answer))
+           headers = {
+                "Authorization": f"Bearer {API_KEY}",
+                "Content-Type": "application/json"
+           }
+            data = {
+                "model": "deepseek-chat",
+                "messages": [{"role": "user", "content": user_message}]
+            }
+            response = requests.post(API_URL, json=data, headers=headers)
+            if response.status_code == 200:
+                bot_reply = response.json()['choices'][0]['message']['content']
+            else:
+                bot_reply = "抱歉，我暂时无法处理你的请求。"
+        
+            # 将回复发送回用户
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=bot_reply)
+            )
+
     
     elif event.source.user_id != 'U6abe720c74a3720fc837cbb1e22ca5c1':
         if '國' in msg and '機' in msg:

@@ -119,6 +119,7 @@ def handle_message(event):
                 "messages": [{"role": "user", "content": msg}]
             }
             response = requests.post(API_URL, json=data, headers=headers)
+            print(response.status_code)
             if response.status_code == 200:
                 bot_reply = response.json()['choices'][0]['message']['content']
             else:

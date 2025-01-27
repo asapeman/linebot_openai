@@ -171,7 +171,7 @@ def handle_message(event):
             if response.status_code == 200:
                 bot_reply = response.json()['choices'][0]['message']['content']
             else:
-                bot_reply = "抱歉，我暂时无法处理你的请求。"
+                bot_reply = "抱歉，我暫時無法處理您的請求。"
         
             # 将回复发送回用户
             line_bot_api.reply_message(

@@ -12,6 +12,7 @@ import os
 from firebase import firebase
 import google.generativeai as genai
 from datetime import datetime, timedelta
+import requests
 
 #======python的函數庫==========
 import tempfile, os

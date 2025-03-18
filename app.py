@@ -138,7 +138,7 @@ def handle_message(event):
         elif '國' in msg and '基' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('國機都讓腎了，哪來的國機?'))
         elif '陷阱' in msg:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作的糞便製造機，才會吃飽沒事幹設陷阱陷害人吧?'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('只有不肯工作又精神異常的糞便製造機，才會吃飽沒事幹又那麼幼稚設陷阱陷害人吧?'))
         elif '老實' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('老實人都不老實啊~'))
         elif '愛情' in msg:

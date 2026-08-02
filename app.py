@@ -177,7 +177,7 @@ def handle_message(event):
     elif msg == '挖':
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=446, sticker_id=2011))
     elif '八月二號' in msg or '8/2' in msg:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('隔天八月三號是我一生摯愛的生日(red heart)'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('隔天八月三號是我一生摯愛的生日\U0001F497'))
             
 
 @handler.add(PostbackEvent)

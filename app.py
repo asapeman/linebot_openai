@@ -173,6 +173,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('我屬於老實人\U0001F495'))
         elif '八月二號' in msg or '8/2' in msg:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('隔天八月三號是我一生摯愛的生日\U0001F497'))
+        elif '七夕' in msg or '農曆7/7' in msg or '7夕' in msg:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('七夕的郭郎是一夜七次郎\U0001FAE3'))
+            line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=6362, sticker_id=11087934))
         
     
 
